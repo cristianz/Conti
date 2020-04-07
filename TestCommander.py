@@ -17,6 +17,7 @@ class Ui_Exporter(object):
         self.copyButton = QtWidgets.QPushButton(self.centralwidget)
         self.copyButton.setGeometry(QtCore.QRect(40, 130, 111, 41))
         self.copyButton.setObjectName("copyButton")
+        self.copyButton.setEnabled(False)
         # REFRESH BUTTON
         self.refreshButton = QtWidgets.QPushButton(self.centralwidget)
         self.refreshButton.setGeometry(QtCore.QRect(190, 130, 111, 41))

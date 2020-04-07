@@ -1,3 +1,4 @@
+import openpyxl
 from openpyxl import load_workbook
 import win32com.client as win32
 import TestCommander
@@ -8,7 +9,7 @@ from datetime import datetime
 from distutils.dir_util import copy_tree
 
 excel = win32.gencache.EnsureDispatch('Excel.Application')
-excel.Visible = True
+excel.Visible = False
 today = str(datetime.today().strftime('%d-%m-%Y'))
 
 def createFolder(directory):
@@ -33,9 +34,9 @@ class TASISCopyResults(QtWidgets.QMainWindow, TestCommander.Ui_Exporter):
         self.excelFile.clear()
         self.excelFile.addItem(excel.ActiveWorkbook.FullName)
         self.progressBar.setValue(0)
+        self.copyButton.setEnabled(True)
 
     def functionCopy(self):
-        excel.Visible = False
         path_wb = (str(excel.ActiveWorkbook.FullName))
         path = path_wb
         print(path)
@@ -71,6 +72,7 @@ class TASISCopyResults(QtWidgets.QMainWindow, TestCommander.Ui_Exporter):
         excel.Visible = True
 
     def functionCancel(self):
+        excel.Visible = True
         self.close()
 
 def main():
